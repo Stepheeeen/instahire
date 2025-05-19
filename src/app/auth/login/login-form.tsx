@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
 import { Checkbox } from "@/components/ui/checkbox"
-import { loginUser } from "@/app/actions/auth-actions"
+import { loginUser } from "../../actions/auth-actions"
 
 const loginSchema = z.object({
   email: z.string().email({
