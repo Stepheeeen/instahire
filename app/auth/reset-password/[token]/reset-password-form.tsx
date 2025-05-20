@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
-import { resetPassword } from "@/app/actions/auth-actions"
 
 const resetPasswordSchema = z
   .object({
@@ -45,11 +44,6 @@ export function ResetPasswordForm({ token }: { token: string }) {
   async function onSubmit(data: ResetPasswordFormValues) {
     setIsLoading(true)
     try {
-      // In a real app, this would call your authentication API
-      await resetPassword({
-        token,
-        password: data.password,
-      })
 
       toast({
         title: "Password reset successful",

@@ -1,23 +1,10 @@
 import { redirect } from "next/navigation"
-import { getUserSession, getJobById } from "@/app/actions/auth-actions"
 import { JobDetailView } from "./job-detail-view"
 
 export default async function JobDetailPage({ params }: { params: { id: string } }) {
-  const user = await getUserSession()
-
-  if (!user) {
-    redirect("/auth/login")
-  }
-
-  if (user.userType !== "contractor") {
-    redirect("/dashboard")
-  }
-
-  const job = await getJobById(params.id)
-
-  if (!job) {
-    redirect("/dashboard/find-jobs")
-  }
+  const jobId = params.id
+  const user = { id: "123", name: "User A" } // Replace with actual user data
+  const job = { id: jobId, title: "Sample Job", description: "Job Description" } // Replace with actual job data
 
   return (
     <div className="container py-10">

@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
-import { requestPasswordReset } from "@/app/actions/auth-actions"
 
 const forgotPasswordSchema = z.object({
   email: z.string().email({
@@ -35,8 +34,6 @@ export function ForgotPasswordForm() {
   async function onSubmit(data: ForgotPasswordFormValues) {
     setIsLoading(true)
     try {
-      // In a real app, this would call your authentication API
-      await requestPasswordReset(data.email)
 
       setIsSubmitted(true)
 

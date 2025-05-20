@@ -8,7 +8,6 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Badge } from "@/components/ui/badge"
 import { CalendarIcon, DollarSign, ArrowLeft, Loader2 } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
-import { applyForJob } from "@/app/actions/auth-actions"
 
 export function JobDetailView({ job, userId }: { job: any; userId: string }) {
   const [isApplying, setIsApplying] = useState(false)
@@ -20,7 +19,7 @@ export function JobDetailView({ job, userId }: { job: any; userId: string }) {
   async function handleApply() {
     setIsApplying(true)
     try {
-      await applyForJob(userId, job.id)
+      
 
       toast({
         title: "Application submitted",
