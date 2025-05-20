@@ -1,25 +1,9 @@
-import { redirect } from "next/navigation"
-import { getUserSession, getJobById, getJobContractors } from "@/app/actions/auth-actions"
 import { JobManagementView } from "./job-management-view"
 
-export default async function JobManagementPage({ params }: { params: { id: string } }) {
-  const user = await getUserSession()
-
-  if (!user) {
-    redirect("/auth/login")
-  }
-
-  if (user.userType !== "project-owner") {
-    redirect("/dashboard")
-  }
-
-  const job = await getJobById(params.id)
-
-  if (!job || job.ownerId !== user.id) {
-    redirect("/dashboard/my-jobs")
-  }
-
-  const contractors = await getJobContractors(params.id)
+export default async function JobManagementPage() {
+  const job = { id: "1", title: "Sample Job" }; // Replace with actual job data
+  const contractors = [{ id: "1", name: "Contractor A" }]; // Replace with actual contractors data
+  const user = { id: "123", name: "User A" }; // Replace with actual user data
 
   return (
     <div className="container py-10">

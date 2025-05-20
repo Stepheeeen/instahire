@@ -1,9 +1,12 @@
+import Header from "@/components/ui/custom/header";
 import { PostJobForm } from "./post-job-form"
 
 export default async function PostJobPage() {
   const wallet = { balance: 100 }; // Example wallet object
-  const user = { id: "123" }; // Example user object
+  const user = { id: "123", name: 'John Doe', userType: 'project-owner' }; // Example user object
   return (
+    <>
+     <Header user={user}/>
     <div className="container py-10">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-6">
@@ -18,5 +21,6 @@ export default async function PostJobPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

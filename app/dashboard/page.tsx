@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Wallet, Briefcase, Users, Clock } from "lucide-react"
+import Header from "@/components/ui/custom/header";
 
 type User = {
   name: string;
@@ -55,45 +56,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b bg-white/80 backdrop-blur-sm dark:bg-gray-950/80">
-        <div className="container flex items-center justify-between">
-          <div className="flex items-center">
-            <span className="font-bold text-xl text-primary">InstaHire</span>
-          </div>
-          <nav className="flex items-center gap-4 sm:gap-6">
-            <Link href="/dashboard" className="text-sm font-medium hover:text-primary">
-              Dashboard
-            </Link>
-            {user.userType === "project-owner" ? (
-              <>
-                <Link href="/dashboard/post-job" className="text-sm font-medium hover:text-primary">
-                  Post Job
-                </Link>
-                <Link href="/dashboard/my-jobs" className="text-sm font-medium hover:text-primary">
-                  My Jobs
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href="/dashboard/find-jobs" className="text-sm font-medium hover:text-primary">
-                  Find Jobs
-                </Link>
-                <Link href="/dashboard/applications" className="text-sm font-medium hover:text-primary">
-                  My Applications
-                </Link>
-              </>
-            )}
-            <Link href="/dashboard/profile" className="text-sm font-medium hover:text-primary">
-              Profile
-            </Link>
-            <form>
-              <Button variant="outline" size="sm" type="submit">
-                Logout
-              </Button>
-            </form>
-          </nav>
-        </div>
-      </header>
+      <Header user={user}/>
       <main className="flex-1 container py-6 md:py-12">
         <div className="max-w-6xl mx-auto space-y-6">
           <div className="flex items-center justify-between">

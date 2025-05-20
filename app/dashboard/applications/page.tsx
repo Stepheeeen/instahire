@@ -1,24 +1,38 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
-import { getUserSession, getUserApplications } from "@/app/actions/auth-actions"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DollarSign, Calendar } from "lucide-react"
 
 export default async function ApplicationsPage() {
-  const user = await getUserSession()
-
-  if (!user) {
-    redirect("/auth/login")
+  // Simulate fetching applications from a database
+  const applications = [
+    {
+      id: "1",
+      jobId: "1",
+      jobTitle: "Build a React App",
+      proposedRate: 500,
+      status: "pending",
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: "2",
+      jobId: "2",
+      jobTitle: "Design a Logo",
+      proposedRate: 200,
+      status: "accepted",
+      createdAt: new Date().toISOString(),
+    },
+  ]
+  // Simulate user authentication
+  const user = {
+    userType: "contractor", // Example user type
+    id: "user123", // Example user ID
   }
-
   if (user.userType !== "contractor") {
-    redirect("/dashboard")
+    redirect("/dashboard/my-jobs")
   }
-
-  const applications = await getUserApplications(user.id)
-
   return (
     <div className="container py-10">
       <div className="max-w-6xl mx-auto">
