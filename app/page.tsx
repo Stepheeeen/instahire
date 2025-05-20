@@ -7,7 +7,7 @@ export default function Home() {
       <header className="px-4 lg:px-6 h-16 flex items-center border-b bg-white/80 backdrop-blur-sm dark:bg-gray-950/80">
         <div className="container flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <span className="font-bold text-xl text-primary">Auth System</span>
+            <span className="font-bold text-xl text-primary">InstaHire</span>
           </Link>
           <nav className="flex gap-4 sm:gap-6">
             <Link href="/auth/login" className="text-sm font-medium hover:text-primary">
@@ -26,11 +26,10 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                    Secure Authentication System
+                    Hire Contractors Instantly
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                    A complete authentication solution with user registration, login, and password reset
-                    functionalities.
+                    Connect with skilled contractors or find your next project with secure escrow payments.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -72,35 +71,35 @@ export default function Home() {
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Key Features</h2>
                 <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                  Our authentication system provides everything you need to secure your application
+                  InstaHire provides everything you need to connect and work securely
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
               {[
                 {
-                  title: "User Registration",
-                  description: "Secure sign-up with email verification and password validation",
+                  title: "Secure Escrow Payments",
+                  description: "Funds are held securely until work is completed and approved",
                 },
                 {
-                  title: "Secure Login",
-                  description: "Protected authentication with session management",
+                  title: "Built-in Wallet",
+                  description: "Manage your funds directly on the platform",
                 },
                 {
-                  title: "Password Reset",
-                  description: "Simple flow for users to recover their accounts",
+                  title: "Simple Job Posting",
+                  description: "Post jobs and find contractors quickly",
                 },
                 {
-                  title: "CSRF Protection",
-                  description: "Built-in security against cross-site request forgery",
+                  title: "Streamlined Applications",
+                  description: "Apply with one click using your pre-filled profile",
                 },
                 {
-                  title: "Responsive Design",
-                  description: "Works seamlessly on desktop, tablet, and mobile devices",
+                  title: "Contractor Profiles",
+                  description: "Showcase your skills and experience to potential clients",
                 },
                 {
-                  title: "Modern UI",
-                  description: "Clean, accessible interface with visual feedback",
+                  title: "Project Management",
+                  description: "Track progress and manage contracts in one place",
                 },
               ].map((feature, index) => (
                 <div
@@ -123,7 +122,7 @@ export default function Home() {
       <footer className="py-6 border-t bg-white dark:bg-gray-950">
         <div className="container flex flex-col items-center justify-center gap-4 md:flex-row">
           <p className="text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Auth System. All rights reserved.
+            &copy; {new Date().getFullYear()} InstaHire. All rights reserved.
           </p>
         </div>
       </footer>

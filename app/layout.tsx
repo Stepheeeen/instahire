@@ -5,9 +5,10 @@ import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// Update the metadata
 export const metadata = {
-  title: "Authentication System",
-  description: "A complete authentication system built with Next.js and Tailwind CSS",
+  title: "InstaHire",
+  description: "Connect with contractors and project owners securely",
     generator: 'v0.dev'
 }
 

@@ -12,6 +12,8 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
 import { registerUser } from "@/app/actions/auth-actions"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Textarea } from "@/components/ui/textarea"
 
 const registerSchema = z
   .object({
@@ -25,6 +27,11 @@ const registerSchema = z
       message: "Password must be at least 8 characters.",
     }),
     confirmPassword: z.string(),
+    userType: z.enum(["contractor", "project-owner"], {
+      required_error: "Please select a user type.",
+    }),
+    country: z.string().optional(),
+    bio: z.string().optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match.",
@@ -47,17 +54,22 @@ export function RegisterForm() {
       email: "",
       password: "",
       confirmPassword: "",
+      userType: "contractor",
+      country: "",
+      bio: "",
     },
   })
 
   async function onSubmit(data: RegisterFormValues) {
     setIsLoading(true)
     try {
-      // In a real app, this would call your authentication API
       await registerUser({
         name: data.name,
         email: data.email,
         password: data.password,
+        userType: data.userType,
+        country: data.country,
+        bio: data.bio,
       })
 
       toast({
@@ -102,6 +114,65 @@ export function RegisterForm() {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input type="email" placeholder="john.doe@example.com" className="auth-input" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="userType"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel>I am a</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-col space-y-1"
+                >
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="contractor" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Contractor (I'm looking for work)</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="project-owner" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Project Owner (I'm hiring)</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="country"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Country (Optional)</FormLabel>
+              <FormControl>
+                <Input placeholder="United States" className="auth-input" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="bio"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Short Bio (Optional)</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Tell us a bit about yourself" className="resize-none min-h-[80px]" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

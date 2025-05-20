@@ -12,7 +12,7 @@ export default function AuthLayout({
       <header className="px-4 lg:px-6 h-16 flex items-center border-b bg-white/80 backdrop-blur-sm dark:bg-gray-950/80">
         <div className="container flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <span className="font-bold text-xl text-primary">Auth System</span>
+            <span className="font-bold text-xl text-primary">InstaHire</span>
           </Link>
         </div>
       </header>
@@ -22,7 +22,7 @@ export default function AuthLayout({
       <footer className="py-6 border-t bg-white/80 backdrop-blur-sm dark:bg-gray-950/80">
         <div className="container flex flex-col items-center justify-center gap-4 md:flex-row">
           <p className="text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Auth System. All rights reserved.
+            &copy; {new Date().getFullYear()} InstaHire. All rights reserved.
           </p>
         </div>
       </footer>
