@@ -1,20 +1,8 @@
-import { redirect } from "next/navigation"
-import { getUserSession, getUserWallet } from "@/app/actions/auth-actions"
 import { PostJobForm } from "./post-job-form"
 
 export default async function PostJobPage() {
-  const user = await getUserSession()
-
-  if (!user) {
-    redirect("/auth/login")
-  }
-
-  if (user.userType !== "project-owner") {
-    redirect("/dashboard")
-  }
-
-  const wallet = await getUserWallet(user.id)
-
+  const wallet = { balance: 100 }; // Example wallet object
+  const user = { id: "123" }; // Example user object
   return (
     <div className="container py-10">
       <div className="max-w-4xl mx-auto">

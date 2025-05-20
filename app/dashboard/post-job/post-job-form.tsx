@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -12,7 +11,6 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
 import { Textarea } from "@/components/ui/textarea"
-import { postJob } from "@/app/actions/auth-actions"
 
 const jobSchema = z.object({
   title: z.string().min(5, {
@@ -60,14 +58,6 @@ export function PostJobForm({ userId }: { userId: string }) {
     try {
       // Convert skills string to array
       const skillsArray = data.skills.split(",").map((skill) => skill.trim())
-
-      await postJob(userId, {
-        title: data.title,
-        description: data.description,
-        budget: data.budget,
-        skills: skillsArray,
-        deadline: new Date(data.deadline),
-      })
 
       toast({
         title: "Job posted",

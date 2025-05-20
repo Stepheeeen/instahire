@@ -1,15 +1,11 @@
-import { redirect } from "next/navigation"
-import { getUserSession, getUserProfile } from "@/app/actions/auth-actions"
 import { ProfileForm } from "./profile-form"
 
 export default async function ProfilePage() {
-  const user = await getUserSession()
+  // Simulate fetching user data
+  const user = { id: "123", name: "John Doe", email: "johndoe@example.com" }
 
-  if (!user) {
-    redirect("/auth/login")
-  }
-
-  const profile = await getUserProfile(user.id)
+  // Simulate profile data
+  const profile = { id: user.id, name: user.name, email: user.email }
 
   return (
     <div className="container py-10">

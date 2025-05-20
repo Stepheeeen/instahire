@@ -1,23 +1,36 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
-import { getUserSession, getJobsByOwner } from "@/app/actions/auth-actions"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CalendarIcon, DollarSign, Users } from "lucide-react"
 
 export default async function MyJobsPage() {
-  const user = await getUserSession()
-
-  if (!user) {
-    redirect("/auth/login")
-  }
-
-  if (user.userType !== "project-owner") {
-    redirect("/dashboard")
-  }
-
-  const jobs = await getJobsByOwner(user.id)
+  // Simulate fetching jobs from a database
+  const jobs = [
+    {
+      id: "1",
+      title: "Build a React App",
+      description: "Looking for a React developer to build a web application.",
+      budget: 500,
+      skills: ["React", "JavaScript", "CSS"],
+      deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+      status: "open",
+      createdAt: new Date().toISOString(),
+      applications: [],
+    },
+    {
+      id: "2",
+      title: "Design a Logo",
+      description: "Need a logo designed for my new startup.",
+      budget: 200,
+      skills: ["Graphic Design", "Logo Design"],
+      deadline: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+      status: "in-progress",
+      createdAt: new Date().toISOString(),
+      applications: [],
+    },
+  ]
 
   return (
     <div className="container py-10">

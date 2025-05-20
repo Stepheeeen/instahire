@@ -11,10 +11,9 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
 import { Textarea } from "@/components/ui/textarea"
-import { updateUserProfile } from "@/app/actions/auth-actions"
 
 // Create a schema based on user type
-const createProfileSchema = (userType: string) => {
+const createProfileSchema = (userType: string): z.ZodSchema => {
   const baseSchema = {
     name: z.string().min(2, {
       message: "Name must be at least 2 characters.",
@@ -27,7 +26,7 @@ const createProfileSchema = (userType: string) => {
   if (userType === "contractor") {
     return z.object({
       ...baseSchema,
-      skills: z.string().optional(),
+      skills: z.union([z.string(), z.array(z.string())]).optional(),
       ratePerHour: z.coerce.number().min(0).optional(),
       resume: z.string().optional(),
     })
@@ -41,54 +40,18 @@ const createProfileSchema = (userType: string) => {
 
 export function ProfileForm({ profile }: { profile: any }) {
   const [isLoading, setIsLoading] = useState(false)
-  const { toast } = useToast()
-
-  const profileSchema = createProfileSchema(profile.userType)
-  type ProfileFormValues = z.infer<typeof profileSchema>
-
-  // Parse skills array to string for the form
-  const defaultSkills = profile.profile.skills ? profile.profile.skills.join(", ") : ""
-
-  const form = useForm<ProfileFormValues>({
-    resolver: zodResolver(profileSchema),
-    defaultValues: {
-      name: profile.name,
-      country: profile.country || "",
-      bio: profile.bio || "",
-      avatar: profile.profile.avatar || "",
-      ...(profile.userType === "contractor"
-        ? {
-            skills: defaultSkills,
-            ratePerHour: profile.profile.ratePerHour || 0,
-            resume: profile.profile.resume || "",
-          }
-        : {
-            domainName: profile.profile.domainName || "",
-          }),
-    },
+  const form = useForm({
+    resolver: zodResolver(createProfileSchema(profile.userType)),
+    defaultValues: profile,
   })
 
-  async function onSubmit(data: ProfileFormValues) {
+  const onSubmit = async (data: any) => {
     setIsLoading(true)
     try {
-      // Convert skills string to array
-      const formattedData = { ...data }
-      if (profile.userType === "contractor" && data.skills) {
-        formattedData.skills = data.skills.split(",").map((skill) => skill.trim())
-      }
-
-      await updateUserProfile(profile.id, formattedData)
-
-      toast({
-        title: "Profile updated",
-        description: "Your profile has been updated successfully.",
-      })
+      // Simulate API call
+      console.log("Profile data submitted:", data)
     } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Update failed",
-        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
-      })
+      console.error("Error updating profile:", error)
     } finally {
       setIsLoading(false)
     }

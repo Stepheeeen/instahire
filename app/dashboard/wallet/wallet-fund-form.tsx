@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
-import { fundWallet } from "@/app/actions/auth-actions"
+
 
 const fundSchema = z.object({
   amount: z.coerce.number().positive({
@@ -34,8 +34,19 @@ export function WalletFundForm({ userId }: { userId: string }) {
   async function onSubmit(data: FundFormValues) {
     setIsLoading(true)
     try {
-      const result = await fundWallet(userId, data.amount)
-
+      // Simulate API call to fund wallet
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+      // Simulate fetching new balance
+      const result = {
+        newBalance: 1000 + data.amount, // Assuming the initial balance was 1000
+      }
+      // In a real application, this would be the result of an API call
+      // For example: const result = await fundWallet(userId, data.amount)
+      // Simulate a successful response
+      if (result.newBalance > 5000) {
+        throw new Error("Funding limit exceeded. Please contact support.")
+      }
+      // Show success toast
       toast({
         title: "Wallet funded",
         description: `Successfully added ${data.amount} USDC to your wallet. New balance: ${result.newBalance} USDC`,

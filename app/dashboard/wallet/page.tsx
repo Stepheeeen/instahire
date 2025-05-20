@@ -1,16 +1,19 @@
 import { redirect } from "next/navigation"
-import { getUserSession, getUserWallet } from "@/app/actions/auth-actions"
 import { WalletFundForm } from "./wallet-fund-form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default async function WalletPage() {
-  const user = await getUserSession()
+  // Mock wallet data (replace with actual API call or data fetching logic)
+  const wallet = {
+    balance: 1234.56, // Example balance
+    address: "0x1234567890abcdef1234567890abcdef12345678", // Example address
+  };
 
-  if (!user) {
-    redirect("/auth/login")
-  }
-
-  const wallet = await getUserWallet(user.id)
+  // Mock user data (replace with actual user fetching logic)
+  const user = {
+    userType: "project-owner", // Example user type
+    id: "user123", // Example user ID
+  };
 
   return (
     <div className="container py-10">

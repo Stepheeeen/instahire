@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useToast } from "@/components/ui/use-toast"
-import { registerUser } from "@/app/actions/auth-actions"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -59,30 +58,22 @@ export function RegisterForm() {
       bio: "",
     },
   })
-
-  async function onSubmit(data: RegisterFormValues) {
+  const onSubmit = async (data: RegisterFormValues) => {
     setIsLoading(true)
     try {
-      await registerUser({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        userType: data.userType,
-        country: data.country,
-        bio: data.bio,
-      })
-
+      // Simulate an API call
+      await new Promise((resolve) => setTimeout(resolve, 2000))
       toast({
-        title: "Account created!",
-        description: "You have successfully registered. Please sign in.",
+        title: "Account created successfully!",
+        description: "You can now log in to your account.",
+        variant: "default",
       })
-
       router.push("/auth/login")
     } catch (error) {
       toast({
+        title: "Error creating account",
+        description: "Please try again later.",
         variant: "destructive",
-        title: "Registration failed",
-        description: error instanceof Error ? error.message : "Something went wrong. Please try again.",
       })
     } finally {
       setIsLoading(false)

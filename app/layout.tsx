@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "InstaHire",
   description: "Connect with contractors and project owners securely",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
