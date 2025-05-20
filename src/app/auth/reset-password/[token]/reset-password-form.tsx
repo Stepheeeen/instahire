@@ -70,7 +70,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-6">
         <FormField
           control={form.control}
           name="password"
@@ -79,7 +79,12 @@ export function ResetPasswordForm({ token }: { token: string }) {
               <FormLabel>New Password</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Input type={showPassword ? "text" : "password"} placeholder="••••••••" {...field} />
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    className="auth-input"
+                    {...field}
+                  />
                   <Button
                     type="button"
                     variant="ghost"
@@ -105,7 +110,12 @@ export function ResetPasswordForm({ token }: { token: string }) {
               <FormLabel>Confirm New Password</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Input type={showConfirmPassword ? "text" : "password"} placeholder="••••••••" {...field} />
+                  <Input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    className="auth-input"
+                    {...field}
+                  />
                   <Button
                     type="button"
                     variant="ghost"
@@ -123,7 +133,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
           )}
         />
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button type="submit" className="w-full auth-button mt-6" disabled={isLoading}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

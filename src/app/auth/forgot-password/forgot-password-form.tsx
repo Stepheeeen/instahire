@@ -57,10 +57,14 @@ export function ForgotPasswordForm() {
 
   if (isSubmitted) {
     return (
-      <div className="space-y-4 text-center">
-        <h3 className="text-lg font-medium">Check your email</h3>
-        <p className="text-muted-foreground">We&apos;ve sent a password reset link to your email address.</p>
-        <Button variant="outline" className="w-full" onClick={() => setIsSubmitted(false)}>
+      <div className="space-y-4 text-center mt-6">
+        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+          <h3 className="text-lg font-medium text-primary">Check your email</h3>
+          <p className="text-sm text-muted-foreground mt-2">
+            We&apos;ve sent a password reset link to your email address.
+          </p>
+        </div>
+        <Button variant="outline" className="w-full auth-button-outline" onClick={() => setIsSubmitted(false)}>
           Back to reset password
         </Button>
       </div>
@@ -69,7 +73,7 @@ export function ForgotPasswordForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-6">
         <FormField
           control={form.control}
           name="email"
@@ -77,14 +81,14 @@ export function ForgotPasswordForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="john.doe@example.com" {...field} />
+                <Input type="email" placeholder="john.doe@example.com" className="auth-input" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button type="submit" className="w-full auth-button mt-6" disabled={isLoading}>
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

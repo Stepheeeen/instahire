@@ -3,20 +3,20 @@ import { LoginForm } from "./login-form"
 
 export default function LoginPage() {
   return (
-    <div className="space-y-6">
+    <div className="auth-card">
       <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold">Sign in</h1>
-        <p className="text-muted-foreground">Enter your email and password to sign in to your account</p>
+        <h1 className="text-2xl font-bold">Welcome back</h1>
+        <p className="text-sm text-muted-foreground">Enter your credentials to sign in</p>
       </div>
       <LoginForm />
-      <div className="text-center text-sm">
-        <Link href="/auth/forgot-password" className="underline">
+      <div className="mt-4 text-center text-sm">
+        <Link href="/auth/forgot-password" className="auth-link">
           Forgot your password?
         </Link>
       </div>
-      <div className="text-center text-sm">
+      <div className="mt-2 text-center text-sm">
         Don&apos;t have an account?{" "}
-        <Link href="/auth/register" className="underline">
+        <Link href="/auth/register" className="auth-link">
           Sign up
         </Link>
       </div>
