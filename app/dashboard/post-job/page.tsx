@@ -7,7 +7,7 @@ export default async function PostJobPage() {
   return (
     <>
      <Header user={user}/>
-    <div className="container py-10">
+    <div className="container py-10 px-2">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">Post a New Job</h1>

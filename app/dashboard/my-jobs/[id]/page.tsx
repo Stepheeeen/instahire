@@ -6,7 +6,7 @@ export default async function JobManagementPage() {
   const user = { id: "123", name: "User A" }; // Replace with actual user data
 
   return (
-    <div className="container py-10">
+    <div className="container py-10 px-2">
       <div className="max-w-4xl mx-auto">
         <JobManagementView job={job} contractors={contractors} userId={user.id} />
       </div>

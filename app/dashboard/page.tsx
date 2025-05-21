@@ -57,7 +57,7 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header user={user}/>
-      <main className="flex-1 container py-6 md:py-12">
+      <main className="flex-1 container py-6 md:py-12 px-2">
         <div className="max-w-6xl mx-auto space-y-6">
           <div className="flex items-center justify-between">
             <div>

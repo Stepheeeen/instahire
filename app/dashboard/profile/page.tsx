@@ -11,7 +11,7 @@ export default async function ProfilePage() {
   return (
     <>
       <Header user={user} />
-      <div className="container py-10">
+      <div className="container py-10 px-2">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Your Profile</h1>
           <div className="bg-white dark:bg-gray-950 rounded-lg border shadow-sm p-6">

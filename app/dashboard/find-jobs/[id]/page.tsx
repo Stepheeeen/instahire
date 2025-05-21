@@ -7,7 +7,7 @@ export default async function JobDetailPage({ params }: { params: { id: string }
   const job = { id: jobId, title: "Sample Job", description: "Job Description" } // Replace with actual job data
 
   return (
-    <div className="container py-10">
+    <div className="container py-10 px-2">
       <div className="max-w-4xl mx-auto">
         <JobDetailView job={job} userId={user.id} />
       </div>

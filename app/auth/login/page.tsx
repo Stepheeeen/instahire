@@ -3,7 +3,7 @@ import { LoginForm } from "./login-form"
 
 export default function LoginPage() {
   return (
-    <div className="auth-card">
+    <div className="auth-card px-2">
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-bold">Welcome back</h1>
         <p className="text-sm text-muted-foreground">Enter your credentials to sign in</p>

@@ -7,7 +7,7 @@ export default function ResetPasswordPage({
   params: { token: string }
 }) {
   return (
-    <div className="auth-card">
+    <div className="auth-card px-2">
       <div className="space-y-2 text-center">
         <h1 className="text-2xl font-bold">Reset password</h1>
         <p className="text-sm text-muted-foreground">Enter your new password below</p>

@@ -33,7 +33,7 @@ export default async function MyJobsPage() {
   ]
 
   return (
-    <div className="container py-10">
+    <div className="container py-10 px-2">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">My Jobs</h1>
